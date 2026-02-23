@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 # ##  RAG Q&A converrsation with PDF including Chat History
 
 # import streamlit as st
@@ -904,3 +904,4 @@ else:
 
 
     
+
