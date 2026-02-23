@@ -199,7 +199,10 @@ from dotenv import load_dotenv
 load_dotenv()
 
 hf_token=os.getenv("HF_TOKEN")
-embeddings=HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2")
+embeddings = HuggingFaceEmbeddings(
+    model_name="sentence-transformers/all-MiniLM-L6-v2",
+    model_kwargs={"device": "cpu"}
+)
 # ------------------ PAGE CONFIG ------------------
 st.set_page_config(
     page_title="RAG PDF Chat",
