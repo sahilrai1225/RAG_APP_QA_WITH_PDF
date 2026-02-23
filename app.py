@@ -189,6 +189,7 @@ from langchain_core.runnables import RunnableWithMessageHistory
 from langchain_core.runnables import RunnablePassthrough,RunnableLambda
 # MPH is for defining the session key and what kind of session histor
 from langchain_groq import ChatGroq
+from langchain_community.embeddings import HuggingFaceInferenceAPIEmbeddings
 from langchain_huggingface import HuggingFaceEmbeddings
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_community.document_loaders import PyPDFLoader
@@ -197,12 +198,11 @@ from langchain_community.vectorstores import Chroma
 import os
 from dotenv import load_dotenv
 load_dotenv()
-
-hf_token=os.getenv("HF_TOKEN")
-embeddings = HuggingFaceEmbeddings(
-    model_name="sentence-transformers/all-MiniLM-L6-v2",
-    model_kwargs={"device": "cpu"}
+embeddings = HuggingFaceInferenceAPIEmbeddings(
+    api_key=os.getenv("HF_TOKEN"),
+    model_name="sentence-transformers/all-MiniLM-L6-v2"
 )
+
 # ------------------ PAGE CONFIG ------------------
 st.set_page_config(
     page_title="RAG PDF Chat",
